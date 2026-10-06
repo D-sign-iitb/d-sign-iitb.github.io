@@ -38,7 +38,7 @@
   --f-display:"Archivo","Arial Black","Helvetica Neue",Arial,sans-serif;
   --f-body:"IBM Plex Sans","Helvetica Neue",Arial,system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-  --wrap:75rem;
+  --wrap:clamp(75rem,calc(75rem + (100vw - 1680px) * .75),90vw);
   --gut:clamp(1rem,4vw,2.5rem);
 }
 @media (prefers-color-scheme: dark){
@@ -85,7 +85,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{font-size:clamp(100%,min(.952vw,1.524vh),187.5%);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{font-size:clamp(100%,min(.952vw,1.9vh),187.5%);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{
   margin:0;
