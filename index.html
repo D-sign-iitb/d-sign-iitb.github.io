@@ -332,8 +332,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bor
 video.vid{pointer-events:none;user-select:none;-webkit-user-select:none}
 video.vid::-webkit-media-controls{display:none!important}
 video.vid::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
-.photo.more{display:grid;place-items:center;background:var(--paper-2)}
-.photo.more b{font:800 clamp(44px,6vw,72px)/1 var(--f-display);font-stretch:125%;color:var(--wood)}
+.team-more{margin:clamp(22px,3vw,32px) 0 0;font:600 clamp(16px,1.6vw,19px)/1.4 var(--f-display);color:var(--ink-2)}
 .photo .ini{position:absolute;inset:0;display:grid;place-items:center;font:800 clamp(28px,3.4vw,40px)/1 var(--f-display);font-stretch:125%;color:var(--ink)}
 .photo .ini span{background:var(--paper-2);padding:4px 10px}
 .photo .tag{position:absolute;left:8px;bottom:8px;font:500 9px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--paper-2);padding:3px 5px}
@@ -749,7 +748,7 @@ const SITE = {
     { name: "Nipun Nistane",       role: "Team leader",        prog: "B.Tech, Mechanical Engg., 3rd year", photo: "media/nipun.jpg", linkedin: "https://www.linkedin.com/in/nipun-nistane-7a0bb5312" },
     { name: "Jithendra J Ampatt",  role: "Deputy team leader", prog: "B.Tech, Mechanical Engg., 3rd year", photo: "media/jithendra.jpg", linkedin: "https://www.linkedin.com/in/jithendra-j-ampatt-12485a318" },
   ],
-  more: { count: 9, note: "Across B.Tech, M.Tech and PhD" },
+  more: { count: 9, note: "B.Tech, M.Tech and PhD" },
 };
 </script>
 
@@ -776,10 +775,8 @@ $("#team-grid").innerHTML = SITE.team.map(p => `
   <div class="member reveal">${photoHTML(p)}
     <div><div class="role">${esc(p.role)}</div><h4>${esc(p.name)}</h4><div class="prog">${esc(p.prog)}</div></div>
     <div class="links">${linkHTML(p)}</div>
-  </div>`).join("") + (SITE.more ? `
-  <div class="member reveal"><div class="photo more" aria-hidden="true"><b>+${SITE.more.count}</b></div>
-    <div><div class="role">Members</div><h4>${SITE.more.count} more members</h4><div class="prog">${esc(SITE.more.note)}</div></div>
-  </div>` : "");
+  </div>`).join("") ;
+if (SITE.more) $("#team-grid").insertAdjacentHTML("afterend", `<p class="team-more reveal">+${SITE.more.count} more members across ${esc(SITE.more.note)}</p>`);
 const m = SITE.mentor;
 $("#mentor").innerHTML = `<div><div class="member"><div class="role">${esc(m.role)}</div><h4 style="font-size:22px">${esc(m.name)}</h4><div class="prog">${esc(m.prog)}</div></div></div>`;
 
