@@ -489,7 +489,7 @@ footer{padding-block:0 2.5rem}
 .hero h1 .outline{display:inline}
 .hero-center h1{font-size:clamp(2.75rem,8.6vw,8.5rem);margin-block:1.25rem 1.75rem}
 @media (max-width: 45rem){.hero h1 .outline{display:block}}
-.usp{margin:0 0 1.75rem;font:600 clamp(1rem,1.5vw,1.125rem)/1.4 var(--f-display);color:var(--ink-2);max-width:none}
+.usp{margin:.25rem 0 2rem;font:700 clamp(1.375rem,2.4vw,1.875rem)/1.3 var(--f-display);color:var(--ink-2);max-width:none}
 .usp b{color:var(--wood);font-weight:850;letter-spacing:.04em}
 .hero-center .cta-row{justify-content:center}
 .sub-h{margin:clamp(2rem,4vw,3rem) 0 1rem;font:700 clamp(1.125rem,1.8vw,1.375rem)/1.2 var(--f-display)}
@@ -538,7 +538,7 @@ footer{padding-block:0 2.5rem}
       <p class="hero-tag-sm" aria-hidden="true">Design. Develop. Deploy.</p>
       <div class="eyebrow">Institute Technical Council, IIT Bombay</div>
       <h1>One object. <span class="outline">Many forms.</span></h1>
-      <p class="lede">Team D-sign designs kinematically transformable products: single objects that reconfigure by hand to take on more than one role, for workspaces, homes and exhibits.</p>
+      <p class="lede">Team D-sign designs kinematically transformable products: objects that reconfigure by hand to take on more than one role, for workspaces, homes and exhibits.</p>
       <p class="usp"><b>NO</b> motors, sensors, or batteries.</p>
       <div class="cta-row">
         <a class="btn btn-solid" href="#projects">View our work <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
@@ -565,7 +565,7 @@ footer{padding-block:0 2.5rem}
       <div class="principles reveal">
         <div class="principle">
           <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="32" r="3"/><circle cx="34" cy="32" r="3"/><path d="M10 32 L18 12 L30 16 L34 32"/><circle cx="18" cy="12" r="2"/><circle cx="30" cy="16" r="2"/><path d="M4 38h36" stroke-dasharray="2 3"/></svg>
-          <div><h4>Human-actuated</h4><p>No motors, batteries or electronics. Gravity and the user's hand drive every change of shape.</p></div>
+          <div><h4>Human-actuated</h4><p>Gravity and the user's hand drive every change of shape.</p></div>
         </div>
         <div class="principle">
           <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="8" width="14" height="14"/><rect x="24" y="22" width="14" height="14"/><path d="M20 15h6v7" stroke-dasharray="2 2"/><circle cx="13" cy="15" r="2"/><circle cx="31" cy="29" r="2"/></svg>
@@ -676,7 +676,7 @@ footer{padding-block:0 2.5rem}
         </div>
       </article>
     </div>
-    <h3 class="sub-h reveal">Industry visits</h3>
+    <h3 class="sub-h reveal">Industry visit</h3>
     <div class="ex-grid">
       <article class="ex ex-wide reveal">
         <div class="ex-photos one"><img src="media/ikea-visit.jpg" alt="Team D-sign during their visit to IKEA" loading="lazy"></div>
@@ -749,10 +749,11 @@ const SITE = {
   email: "d.sign.iitb@gmail.com",
   instagram: "https://www.instagram.com/d.sign_iitb?stkn=MmZnbmJtb215N2h4",
   instagramHandle: "@d.sign_iitb",
-  linkedin: "",           // e.g. "https://linkedin.com/company/teamdsign"
+  linkedin: "https://www.linkedin.com/in/d-sign-iit-bombay-429790441",
+  linkedinLabel: "D-sign IIT Bombay",
   phone: "",              // e.g. "+91 98xxx xxxxx"
   address: "Dept. of Mechanical Engineering, IIT Bombay, Powai, Mumbai 400076",
-  mentor: { name: "Darshan S. Shah", role: "Faculty mentor", prog: "Assistant Professor, Dept. of Mechanical Engineering", photo: "media/darshan.jpg", linkedin: "" },
+  mentor: { name: "Darshan S. Shah", role: "Faculty mentor", prog: "Assistant Professor, Dept. of Mechanical Engineering", photo: "media/darshan.jpg", linkedin: "https://www.linkedin.com/in/dssiitb/" },
   team: [
     { name: "Nipun Nistane",       role: "Team lead",          prog: "B.Tech, Mechanical Engg., 3rd year", photo: "media/nipun.jpg", linkedin: "https://www.linkedin.com/in/nipun-nistane-7a0bb5312" },
     { name: "Jithendra J Ampatt",  role: "Deputy team lead", prog: "B.Tech, Mechanical Engg., 3rd year", photo: "media/jithendra.jpg", linkedin: "https://www.linkedin.com/in/jithendra-j-ampatt-12485a318" },
@@ -796,6 +797,7 @@ $("#mailto").href = "mailto:" + SITE.email;
 const ch = [
   ["Email", SITE.email, SITE.email ? "mailto:" + SITE.email : ""],
   ["Instagram", SITE.instagram ? (SITE.instagramHandle || SITE.instagram) : "", SITE.instagram],
+  ["LinkedIn", SITE.linkedin ? (SITE.linkedinLabel || SITE.linkedin) : "", SITE.linkedin],
   ["Where", SITE.address, ""],
 ];
 $("#channels").innerHTML = ch.map(([k, v, href]) => `<li><span class="k">${k}</span>${
