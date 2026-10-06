@@ -329,6 +329,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bor
   linear-gradient(135deg,transparent 49.6%,var(--line) 49.6% 50.4%,transparent 50.4%),
   linear-gradient(45deg,transparent 49.6%,var(--line) 49.6% 50.4%,transparent 50.4%),var(--paper-2)}
 .photo img{width:100%;height:100%;object-fit:cover}
+video.vid{pointer-events:none;user-select:none;-webkit-user-select:none}
+video.vid::-webkit-media-controls{display:none!important}
+video.vid::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+.photo.more{display:grid;place-items:center;background:var(--paper-2)}
+.photo.more b{font:800 clamp(44px,6vw,72px)/1 var(--f-display);font-stretch:125%;color:var(--wood)}
 .photo .ini{position:absolute;inset:0;display:grid;place-items:center;font:800 clamp(28px,3.4vw,40px)/1 var(--f-display);font-stretch:125%;color:var(--ink)}
 .photo .ini span{background:var(--paper-2);padding:4px 10px}
 .photo .tag{position:absolute;left:8px;bottom:8px;font:500 9px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--paper-2);padding:3px 5px}
@@ -396,7 +401,6 @@ footer{padding-block:0 40px}
 .hero-canvas{width:100%;aspect-ratio:1.18/1;display:block;cursor:grab;touch-action:pan-y;outline:none}
 .hero-canvas.grabbing{cursor:grabbing}
 .hero-cap{display:flex;justify-content:flex-end;gap:12px;margin-top:6px;font:500 11px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-#hero-hint{transition:opacity .4s}
 .proj-text .sub{font:600 18px/1.4 var(--f-body);color:var(--ink)}
 .proj-text p{color:var(--ink-2)}
 .proj-text h3{margin-top:4px}
@@ -518,8 +522,7 @@ footer{padding-block:0 40px}
         </div>
       </div>
       <figure class="hero-fig">
-        <canvas class="hero-canvas" id="hero-3d" role="img" aria-label="A 3D model of a six-legged walking linkage driven by one crank. Drag to rotate it."></canvas>
-        <figcaption class="hero-cap"><span id="hero-hint">Drag to rotate</span></figcaption>
+        <canvas class="hero-canvas" id="hero-3d" role="img" aria-label="A 3D model of a six-legged walking linkage driven by one crank."></canvas>
       </figure>
     </div>
 
@@ -587,11 +590,11 @@ footer{padding-block:0 40px}
       </div>
       <div class="media-stack">
         <figure class="media media-portrait">
-          <video class="vid" src="media/twoble-product.mp4" poster="media/twoble-product-poster.jpg" controls muted loop playsinline autoplay preload="metadata" aria-label="Video of the full-size Twoble changing from floor height to chair height"></video>
+          <video class="vid" src="media/twoble-product.mp4" poster="media/twoble-product-poster.jpg" muted loop playsinline autoplay preload="auto" disablepictureinpicture disableremoteplayback tabindex="-1" aria-label="Video of the full-size Twoble changing from floor height to chair height"></video>
           <figcaption>Full-size product</figcaption>
         </figure>
         <figure class="media media-landscape">
-          <video class="vid" src="media/twoble-prototype.mp4" poster="media/twoble-prototype-poster.jpg" controls muted loop playsinline autoplay preload="metadata" aria-label="Video of the Twoble hand-held prototype changing height"></video>
+          <video class="vid" src="media/twoble-prototype.mp4" poster="media/twoble-prototype-poster.jpg" muted loop playsinline autoplay preload="auto" disablepictureinpicture disableremoteplayback tabindex="-1" aria-label="Video of the Twoble hand-held prototype changing height"></video>
           <figcaption>Hand-held prototype</figcaption>
         </figure>
       </div>
@@ -746,6 +749,7 @@ const SITE = {
     { name: "Nipun Nistane",       role: "Team leader",        prog: "B.Tech, Mechanical Engg., 3rd year", photo: "media/nipun.jpg", linkedin: "https://www.linkedin.com/in/nipun-nistane-7a0bb5312" },
     { name: "Jithendra J Ampatt",  role: "Deputy team leader", prog: "B.Tech, Mechanical Engg., 3rd year", photo: "media/jithendra.jpg", linkedin: "https://www.linkedin.com/in/jithendra-j-ampatt-12485a318" },
   ],
+  more: { count: 9, note: "Across B.Tech, M.Tech and PhD" },
 };
 </script>
 
@@ -772,7 +776,10 @@ $("#team-grid").innerHTML = SITE.team.map(p => `
   <div class="member reveal">${photoHTML(p)}
     <div><div class="role">${esc(p.role)}</div><h4>${esc(p.name)}</h4><div class="prog">${esc(p.prog)}</div></div>
     <div class="links">${linkHTML(p)}</div>
-  </div>`).join("");
+  </div>`).join("") + (SITE.more ? `
+  <div class="member reveal"><div class="photo more" aria-hidden="true"><b>+${SITE.more.count}</b></div>
+    <div><div class="role">Members</div><h4>${SITE.more.count} more members</h4><div class="prog">${esc(SITE.more.note)}</div></div>
+  </div>` : "");
 const m = SITE.mentor;
 $("#mentor").innerHTML = `<div><div class="member"><div class="role">${esc(m.role)}</div><h4 style="font-size:22px">${esc(m.name)}</h4><div class="prog">${esc(m.prog)}</div></div></div>`;
 
@@ -1000,7 +1007,6 @@ let heroTheme = () => {};
 
   /* ---------- 2D fallback (no WebGL) ---------- */
   function fallback() {
-    $("#hero-hint").textContent = "";
     const v = new View({ x0: -115, x1: 115, y0: -100, y1: 42 });
     const ctx = hiDPI(cv, (w, h) => { W = w; H = h; v.fit(w, h, 12); });
     let last = performance.now();
@@ -1135,7 +1141,7 @@ let heroTheme = () => {};
 
   // orbit by drag
   let yaw = -.62, pitch = .2, yawT = yaw, pitchT = pitch, drag = null, dist = 470;
-  cv.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY, yaw: yawT, pitch: pitchT }; cv.setPointerCapture(e.pointerId); cv.classList.add("grabbing"); $("#hero-hint").style.opacity = 0; });
+  cv.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY, yaw: yawT, pitch: pitchT }; cv.setPointerCapture(e.pointerId); cv.classList.add("grabbing"); });
   cv.addEventListener("pointermove", e => { if (!drag) return; yawT = drag.yaw - (e.clientX - drag.x) * .008; pitchT = clamp(drag.pitch + (e.clientY - drag.y) * .005, -.05, .75); });
   const endDrag = () => { drag = null; cv.classList.remove("grabbing"); };
   cv.addEventListener("pointerup", endDrag); cv.addEventListener("pointercancel", endDrag);
@@ -1183,7 +1189,7 @@ const retheme = () => requestAnimationFrame(() => { readTheme(); heroTheme(); })
 new MutationObserver(retheme).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", retheme);
 document.fonts && document.fonts.ready.then(retheme);
-if (reduce) $$("video.vid").forEach(v => { v.removeAttribute("autoplay"); v.pause(); });
+$$("video.vid").forEach(v => { v.muted = true; const go = () => v.play().catch(() => {}); go(); v.addEventListener("pause", () => { if (!document.hidden) go(); }); document.addEventListener("visibilitychange", () => { if (!document.hidden) go(); }); });
 })();
 </script>
 
