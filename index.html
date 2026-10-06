@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" type="image/png" href="media/favicon.png">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
 <title>Team D-sign</title>
 <meta name="description" content="Team D-sign, IIT Bombay: human-actuated, kinematically transformable objects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,8 +19,8 @@
    ========================================================= */
 :root{
   color-scheme: light;
-  --paper:#F6F6F3;
-  --paper-2:#ECECE8;
+  --paper:#F3EFE6;
+  --paper-2:#E8E3D7;
   --ink:#121211;
   --ink-2:#3B3B38;
   --muted:#6A6A65;
@@ -470,13 +472,32 @@ footer{padding-block:0 2.5rem}
 @media (max-width: 40rem){.work-grid,.ex-grid{grid-template-columns:1fr}.ex-photos{grid-template-columns:1fr}}
 .join-band{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap}
 .join-band h2{margin:0}
-.foot-brand{display:inline-flex;align-items:center;gap:1.125rem;border:1.5px solid var(--ink);padding:1.125rem 1.5rem}
+.foot-brand{display:inline-flex;align-items:center;gap:1.125rem}
 .foot-brand>div{display:grid;gap:.5rem}
 .foot-brand .logo-mark{width:3rem;height:3rem}
 .big-word{width:6.875rem;height:1.75rem}
 .tag-sm{font:500 .625rem/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--wood)}
+
+/* ---------- v6: centred hero, nav tagline, members ---------- */
+.nav-tag{font:600 .6875rem/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wood);white-space:nowrap;padding-left:1rem;border-left:1px solid var(--line-strong)}
+.hero-tag-sm{display:none;margin:0 0 .875rem;font:600 .6875rem/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wood)}
+@media (max-width: 37.5rem){.nav-tag{display:none}.hero-tag-sm{display:block}}
+.hero{position:relative;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hero-center{text-align:center;display:grid;justify-items:center;padding-block:clamp(2rem,7vw,6rem) 0}
+.hero-center .lede{max-width:46rem;margin-inline:auto}
+.hero h1 .outline{display:inline}
+.hero-center h1{font-size:clamp(2.75rem,8.6vw,8.5rem);margin-block:1.25rem 1.75rem}
+@media (max-width: 45rem){.hero h1 .outline{display:block}}
+.usp{margin:0 0 1.75rem;font:600 clamp(1rem,1.5vw,1.125rem)/1.4 var(--f-display);color:var(--ink-2);max-width:none}
+.usp b{color:var(--wood);font-weight:850;letter-spacing:.04em}
+.hero-center .cta-row{justify-content:center}
+.sub-h{margin:clamp(2rem,4vw,3rem) 0 1rem;font:700 clamp(1.125rem,1.8vw,1.375rem)/1.2 var(--f-display)}
+.names{list-style:none;margin:0;padding:0;columns:4 12rem;column-gap:clamp(1rem,2.4vw,2rem)}
+.ex-wide .ex-photos.one img{aspect-ratio:8/3}
+@media (max-width: 56.25rem){.ex-wide .ex-photos.one img{aspect-ratio:4/3}}
+.names li{break-inside:avoid;padding:.5rem 0;border-bottom:1px solid var(--line);font-size:.9375rem;color:var(--ink-2)}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -487,9 +508,9 @@ footer{padding-block:0 2.5rem}
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Team D-sign home">
-      <span class="logo-mark" aria-hidden="true"></span>
       <span class="logo-word" role="img" aria-label="D-sign"></span>
     </a>
+    <span class="nav-tag" aria-label="Design, develop, deploy">Design. Develop. Deploy.</span>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Our work</a></li>
@@ -510,26 +531,24 @@ footer{padding-block:0 2.5rem}
 <main id="top">
 <!-- ======================= HERO ======================= -->
 <section class="hero">
+  <!-- Prototype photo slideshow goes inside .hero-bg later -->
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="eyebrow">Institute Technical Council, IIT Bombay</div>
-        <h1>One object.<span class="outline">Many forms.</span></h1>
-        <p class="tagline" aria-label="Design, develop, deploy"><span>Design</span><i aria-hidden="true"></i><span>Develop</span><i aria-hidden="true"></i><span>Deploy</span></p>
-        <p class="lede">Team D-sign designs kinematically transformable products: single objects that reconfigure by hand to take on more than one role, for workspaces, homes and exhibits.</p>
-        <div class="cta-row">
-          <a class="btn btn-solid" href="#projects">View our work <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-        </div>
+    <div class="hero-center">
+      <p class="hero-tag-sm" aria-hidden="true">Design. Develop. Deploy.</p>
+      <div class="eyebrow">Institute Technical Council, IIT Bombay</div>
+      <h1>One object. <span class="outline">Many forms.</span></h1>
+      <p class="lede">Team D-sign designs kinematically transformable products: single objects that reconfigure by hand to take on more than one role, for workspaces, homes and exhibits.</p>
+      <p class="usp"><b>NO</b> motors, sensors or batteries.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#projects">View our work <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       </div>
-      <figure class="hero-fig">
-        <canvas class="hero-canvas" id="hero-3d" role="img" aria-label="A 3D model of a six-legged walking linkage driven by one crank."></canvas>
-      </figure>
     </div>
 
     <div class="stats reveal">
-      <div class="stat"><b>0</b><span>motors, sensors or batteries in any design</span></div>
-      <div class="stat"><b>2</b><span>finished products</span></div>
       <div class="stat"><b>1</b><span>patent filed</span></div>
+      <div class="stat"><b>2</b><span>finished products</span></div>
+      <div class="stat"><b>3</b><span>ongoing projects</span></div>
     </div>
   </div>
 </section>
@@ -646,22 +665,6 @@ footer{padding-block:0 2.5rem}
           <p>We exhibited at INDEXPLUS 2026, the furniture, interiors and design exhibition in Mumbai.</p>
         </div>
       </article>
-      <article class="ex reveal">
-        <div class="ex-photos one"><img src="media/ikea-visit.jpg" alt="Team D-sign during their visit to IKEA" loading="lazy"></div>
-        <div class="ex-body">
-          <h3>IKEA visit</h3>
-          <p>A team visit to IKEA.</p>
-        </div>
-      </article>
-      <article class="ex ex-upcoming reveal">
-        <div class="ex-body">
-          <div class="chips"><span class="chip wood"><i></i>Upcoming competitions and exhibitions</span></div>
-          <ul class="upcoming">
-            <li><h3>IFDA</h3><p>India Furniture Design Awards</p></li>
-            <li><h3>Porada</h3><p>Porada International Design Award</p></li>
-          </ul>
-        </div>
-      </article>
       <article class="ex ex-wide reveal">
         <div class="ex-photos">
           <img src="media/techconnect-1.jpg" alt="Team D-sign with their prototypes at their TechConnect 2025 stall" loading="lazy" style="object-position:50% 58%">
@@ -670,6 +673,16 @@ footer{padding-block:0 2.5rem}
         <div class="ex-body">
           <h3>TechConnect 2025</h3>
           <p>We showcased our prototypes at TechConnect 2025, held at IIT Bombay.</p>
+        </div>
+      </article>
+    </div>
+    <h3 class="sub-h reveal">Industry visits</h3>
+    <div class="ex-grid">
+      <article class="ex ex-wide reveal">
+        <div class="ex-photos one"><img src="media/ikea-visit.jpg" alt="Team D-sign during their visit to IKEA" loading="lazy"></div>
+        <div class="ex-body">
+          <h3>IKEA visit</h3>
+          <p>A team visit to IKEA.</p>
         </div>
       </article>
     </div>
@@ -682,7 +695,6 @@ footer{padding-block:0 2.5rem}
     <div class="sec-head reveal">
       <h2>Our team</h2>
     </div>
-    <div class="mentor reveal" id="mentor"></div>
     <div class="team-grid" id="team-grid"></div>
   </div>
 </section>
@@ -721,8 +733,7 @@ footer{padding-block:0 2.5rem}
 <footer>
   <div class="wrap">
     <div class="foot-brand">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <div><span class="logo-word big-word" role="img" aria-label="D-sign"></span><span class="tag-sm">Design · Develop · Deploy</span></div>
+      <div><span class="logo-word big-word" role="img" aria-label="D-sign"></span><span class="tag-sm">Design. Develop. Deploy.</span></div>
     </div>
   </div>
 </footer>
@@ -741,12 +752,12 @@ const SITE = {
   linkedin: "",           // e.g. "https://linkedin.com/company/teamdsign"
   phone: "",              // e.g. "+91 98xxx xxxxx"
   address: "Dept. of Mechanical Engineering, IIT Bombay, Powai, Mumbai 400076",
-  mentor: { name: "Prof. Darshan S. Shah", role: "Faculty mentor", prog: "Department of Mechanical Engineering, IIT Bombay", photo: "", linkedin: "" },
+  mentor: { name: "Darshan S. Shah", role: "Faculty mentor", prog: "Assistant Professor, Dept. of Mechanical Engineering", photo: "media/darshan.jpg", linkedin: "" },
   team: [
     { name: "Nipun Nistane",       role: "Team lead",          prog: "B.Tech, Mechanical Engg., 3rd year", photo: "media/nipun.jpg", linkedin: "https://www.linkedin.com/in/nipun-nistane-7a0bb5312" },
     { name: "Jithendra J Ampatt",  role: "Deputy team lead", prog: "B.Tech, Mechanical Engg., 3rd year", photo: "media/jithendra.jpg", linkedin: "https://www.linkedin.com/in/jithendra-j-ampatt-12485a318" },
   ],
-  more: { count: 9, note: "B.Tech, M.Tech and PhD" },
+  members: ["Bhavna", "Aarya Rohit", "Malayaj Singh Verma", "Samrat Sagar", "Shifin", "Apoorv Shrivastava", "Sanjib Dutta", "Priyadarshini Sivaraja", "Subodh Kumar Suman", "Syed Naveed Ul Meiraj", "Om Khairnar"],
 };
 </script>
 
@@ -769,14 +780,13 @@ function linkHTML(p) {
   return p.linkedin ? `<a href="${esc(p.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>`
     : `<a class="ph" href="${PH}" aria-disabled="true">LinkedIn</a>`;
 }
-$("#team-grid").innerHTML = SITE.team.map(p => `
+$("#team-grid").innerHTML = [SITE.mentor, ...SITE.team].map(p => `
   <div class="member reveal">${photoHTML(p)}
     <div><div class="role">${esc(p.role)}</div><h4>${esc(p.name)}</h4><div class="prog">${esc(p.prog)}</div></div>
-    <div class="links">${linkHTML(p)}</div>
-  </div>`).join("") ;
-if (SITE.more) $("#team-grid").insertAdjacentHTML("afterend", `<p class="team-more reveal">+${SITE.more.count} more members across ${esc(SITE.more.note)}</p>`);
-const m = SITE.mentor;
-$("#mentor").innerHTML = `<div><div class="member"><div class="role">${esc(m.role)}</div><h4 style="font-size:1.375rem">${esc(m.name)}</h4><div class="prog">${esc(m.prog)}</div></div></div>`;
+    ${p.linkedin ? `<div class="links">${linkHTML(p)}</div>` : ""}
+  </div>`).join("");
+if (SITE.members && SITE.members.length) $("#team-grid").insertAdjacentHTML("afterend", `<h3 class="sub-h reveal">Members</h3><ul class="names reveal">${SITE.members.map(n => `<li>${esc(n)}</li>`).join("")}</ul>`);
+
 
 
 
@@ -822,368 +832,6 @@ $("#theme-btn").addEventListener("click", ev => {
     { duration: 650, easing: "cubic-bezier(.3,.7,.2,1)", pseudoElement: "::view-transition-new(root)" })).catch(() => {});
 });
 
-/* =========================================================
-   DRAWING KIT — theme colours, wood + steel materials
-   ========================================================= */
-let T = {};
-function readTheme() {
-  const cs = getComputedStyle(root), g = n => cs.getPropertyValue(n).trim();
-  T = { ink: g("--ink"), ink2: g("--ink-2"), muted: g("--muted"), line: g("--line"), lineS: g("--line-strong"), paper: g("--paper"), paper2: g("--paper-2"),
-        wood: g("--wood"), woodL: g("--wood-light"), woodD: g("--wood-dark"), s1: g("--steel-1"), s2: g("--steel-2"), s3: g("--steel-3"), poster: g("--poster"),
-        mono: getComputedStyle(document.body).getPropertyValue("--f-mono") || "monospace", v: (T.v || 0) + 1 };
-}
-readTheme();
-function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-function woodCanvas(base, dark, light, seed) {
-  const c = document.createElement("canvas"); c.width = 640; c.height = 120;
-  const x = c.getContext("2d"), r = rng(seed);
-  x.fillStyle = base; x.fillRect(0, 0, 640, 120);
-  // broad tonal bands
-  for (let i = 0; i < 7; i++) { x.globalAlpha = .08 + r() * .1; x.fillStyle = r() > .5 ? light : dark; x.fillRect(0, r() * 120, 640, 6 + r() * 16); }
-  // grain lines
-  for (let i = 0; i < 46; i++) {
-    const y0 = r() * 120, a = 1 + r() * 4, f = .004 + r() * .01, ph = r() * 6.28;
-    x.globalAlpha = .18 + r() * .35; x.strokeStyle = r() > .3 ? dark : light; x.lineWidth = .5 + r() * 1.2;
-    x.beginPath();
-    for (let px = 0; px <= 640; px += 8) { const y = y0 + a * Math.sin(px * f * 6.28 + ph) + a * .4 * Math.sin(px * f * 17 + ph * 2); px ? x.lineTo(px, y) : x.moveTo(px, y); }
-    x.stroke();
-  }
-  // a couple of cathedral arches
-  for (let k = 0; k < 2; k++) {
-    const cx = 120 + r() * 400, cy = 60 + (r() - .5) * 30;
-    for (let j = 1; j < 7; j++) { x.globalAlpha = .18; x.strokeStyle = dark; x.lineWidth = .8; x.beginPath(); x.ellipse(cx, cy, 30 + j * 16, 4 + j * 3.4, 0, 0, 6.28); x.stroke(); }
-  }
-  x.globalAlpha = 1; return c;
-}
-const texCache = new WeakMap();
-function tex(ctx) {
-  let t = texCache.get(ctx);
-  if (!t || t.v !== T.v) {
-    t = { v: T.v, wood: ctx.createPattern(woodCanvas(T.wood, T.woodD, T.woodL, 7), "repeat"), woodL: ctx.createPattern(woodCanvas(T.woodL, T.wood, "#E8C9A2", 11), "repeat") };
-    texCache.set(ctx, t);
-  }
-  return t;
-}
-
-class View {
-  constructor(b) { this.b = b; this.k = 1; this.ox = 0; this.oy = 0; }
-  fit(W, H, pad = 18) {
-    const b = this.b, bw = b.x1 - b.x0, bh = b.y1 - b.y0;
-    this.k = Math.min((W - 2 * pad) / bw, (H - 2 * pad) / bh);
-    this.ox = (W - bw * this.k) / 2 - b.x0 * this.k;
-    this.oy = (H + bh * this.k) / 2 + b.y0 * this.k;
-  }
-  X(x) { return this.ox + x * this.k; } Y(y) { return this.oy - y * this.k; }
-  P(p) { return [this.X(p[0]), this.Y(p[1])]; }
-}
-const V2 = { add: (a, b) => [a[0] + b[0], a[1] + b[1]], sub: (a, b) => [a[0] - b[0], a[1] - b[1]], mul: (a, s) => [a[0] * s, a[1] * s], len: a => Math.hypot(a[0], a[1]), lerp: (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t] };
-const rad = d => d * Math.PI / 180, deg = r => r * 180 / Math.PI;
-const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
-const lerp = (a, b, t) => a + (b - a) * t;
-const smooth = t => t * t * (3 - 2 * t);
-const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-const D = {
-  bar(ctx, v, a, b, w, mat, o = {}) {
-    const A = v.P(a), B = v.P(b), dx = B[0] - A[0], dy = B[1] - A[1], L = Math.hypot(dx, dy), W = Math.max(1.5, w * v.k);
-    const r = o.square ? Math.min(2, W * .15) : W / 2;
-    ctx.save(); ctx.translate(A[0], A[1]); ctx.rotate(Math.atan2(dy, dx));
-    ctx.beginPath(); ctx.roundRect(-W / 2 * (o.square ? 0 : 1), -W / 2, L + W * (o.square ? 0 : 1), W, r);
-    if (mat === "steel") {
-      const g = ctx.createLinearGradient(0, -W / 2, 0, W / 2);
-      g.addColorStop(0, T.s1); g.addColorStop(.28, T.s2); g.addColorStop(.55, T.s3); g.addColorStop(1, T.s1);
-      ctx.fillStyle = g;
-    } else if (mat === "ghost") { ctx.fillStyle = "transparent"; }
-    else { const t = tex(ctx); ctx.fillStyle = mat === "woodL" ? t.woodL : t.wood; }
-    ctx.globalAlpha = o.alpha ?? 1; ctx.fill();
-    if (mat !== "steel" && mat !== "ghost") { // subtle rounding shade on wood
-      const g = ctx.createLinearGradient(0, -W / 2, 0, W / 2);
-      g.addColorStop(0, "rgba(255,255,255,.18)"); g.addColorStop(.5, "rgba(255,255,255,0)"); g.addColorStop(1, "rgba(0,0,0,.22)");
-      ctx.fillStyle = g; ctx.fill();
-    }
-    ctx.lineWidth = o.lw ?? 1.1; ctx.strokeStyle = o.stroke ?? T.ink; ctx.stroke();
-    ctx.restore();
-  },
-  poly(ctx, v, pts, fill, o = {}) {
-    ctx.beginPath(); pts.forEach((p, i) => { const q = v.P(p); i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); }); ctx.closePath();
-    if (fill) { ctx.fillStyle = fill; ctx.globalAlpha = o.alpha ?? 1; ctx.fill(); ctx.globalAlpha = 1; }
-    if (o.shade) { const a = v.P(o.shade[0]), b = v.P(o.shade[1]); const g = ctx.createLinearGradient(a[0], a[1], b[0], b[1]); g.addColorStop(0, "rgba(255,255,255,.14)"); g.addColorStop(1, "rgba(0,0,0,.2)"); ctx.fillStyle = g; ctx.fill(); }
-    if (o.stroke !== false) { ctx.lineWidth = o.lw ?? 1.1; ctx.strokeStyle = o.stroke || T.ink; ctx.setLineDash(o.dash || []); ctx.stroke(); ctx.setLineDash([]); }
-  },
-  pin(ctx, v, p, r = 5) {
-    const [x, y] = v.P(p), R = Math.max(2.5, r);
-    const g = ctx.createRadialGradient(x - R * .35, y - R * .35, R * .1, x, y, R);
-    g.addColorStop(0, T.s2); g.addColorStop(.6, T.s3); g.addColorStop(1, T.s1);
-    ctx.beginPath(); ctx.arc(x, y, R, 0, 7); ctx.fillStyle = g; ctx.fill(); ctx.lineWidth = 1.1; ctx.strokeStyle = T.ink; ctx.stroke();
-    ctx.beginPath(); ctx.arc(x, y, Math.max(1, R * .28), 0, 7); ctx.fillStyle = T.ink; ctx.fill();
-  },
-  hatch(ctx, v, x0, x1, y, o = {}) { // floor / ground line with 45° hatching
-    const a = v.P([x0, y]), b = v.P([x1, y]), s = o.step || 7, h = o.h || 7;
-    ctx.save(); ctx.strokeStyle = T.ink; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
-    ctx.beginPath(); ctx.rect(Math.min(a[0], b[0]), a[1], Math.abs(b[0] - a[0]), h); ctx.clip();
-    ctx.strokeStyle = T.lineS; ctx.lineWidth = .8; ctx.beginPath();
-    for (let x = Math.min(a[0], b[0]) - h; x < Math.max(a[0], b[0]) + h; x += s) { ctx.moveTo(x + h, a[1]); ctx.lineTo(x, a[1] + h); }
-    ctx.stroke(); ctx.restore();
-  },
-  groundPivot(ctx, v, p, s = 1) {
-    const [x, y] = v.P(p), w = 14 * s, h = 13 * s;
-    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - w / 2, y + h); ctx.lineTo(x + w / 2, y + h); ctx.closePath();
-    const g = ctx.createLinearGradient(x - w / 2, y, x + w / 2, y + h); g.addColorStop(0, T.s2); g.addColorStop(1, T.s1);
-    ctx.fillStyle = g; ctx.fill(); ctx.strokeStyle = T.ink; ctx.lineWidth = 1.1; ctx.stroke();
-    ctx.save(); ctx.beginPath(); ctx.rect(x - w, y + h, w * 2, 7 * s); ctx.clip(); ctx.strokeStyle = T.lineS; ctx.lineWidth = .8; ctx.beginPath();
-    ctx.moveTo(x - w * .9, y + h); ctx.lineTo(x + w * .9, y + h);
-    for (let i = -w; i < w; i += 5) { ctx.moveTo(i + x + 6, y + h); ctx.lineTo(i + x, y + h + 7 * s); }
-    ctx.stroke(); ctx.restore();
-  },
-  lines(ctx, v, segs, o = {}) {
-    ctx.save(); ctx.strokeStyle = o.color || T.lineS; ctx.lineWidth = o.lw || 1; ctx.setLineDash(o.dash || [5, 4]); ctx.globalAlpha = o.alpha ?? 1;
-    ctx.beginPath(); segs.forEach(sg => sg.forEach((p, i) => { const q = v.P(p); i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); })); ctx.stroke(); ctx.restore();
-  },
-  text(ctx, v, p, s, o = {}) {
-    const [x, y] = v.P(p); ctx.save(); ctx.font = `${o.w || 500} ${o.size || 11}px ${T.mono}`; ctx.fillStyle = o.color || T.muted;
-    ctx.textAlign = o.align || "center"; ctx.textBaseline = o.base || "middle";
-    if (o.bg) { const m = ctx.measureText(s), w = m.width + 8, h = (o.size || 11) + 6; const bx = o.align === "left" ? x - 4 : o.align === "right" ? x - w + 4 : x - w / 2; ctx.fillStyle = T.paper; ctx.fillRect(bx, y - h / 2, w, h); ctx.fillStyle = o.color || T.muted; }
-    ctx.fillText(s, x + (o.dx || 0), y + (o.dy || 0)); ctx.restore();
-  },
-  dim(ctx, v, a, b, off, label) { // dimension line with arrowheads, offset in screen px
-    let A = v.P(a), B = v.P(b); const dx = B[0] - A[0], dy = B[1] - A[1], L = Math.hypot(dx, dy); if (L < 12) return;
-    const nx = -dy / L, ny = dx / L, A2 = [A[0] + nx * off, A[1] + ny * off], B2 = [B[0] + nx * off, B[1] + ny * off];
-    ctx.save(); ctx.strokeStyle = T.muted; ctx.fillStyle = T.muted; ctx.lineWidth = .9;
-    ctx.beginPath(); ctx.moveTo(A[0] + nx * 3 * Math.sign(off), A[1] + ny * 3 * Math.sign(off)); ctx.lineTo(A2[0] + nx * 5 * Math.sign(off), A2[1] + ny * 5 * Math.sign(off));
-    ctx.moveTo(B[0] + nx * 3 * Math.sign(off), B[1] + ny * 3 * Math.sign(off)); ctx.lineTo(B2[0] + nx * 5 * Math.sign(off), B2[1] + ny * 5 * Math.sign(off));
-    ctx.moveTo(A2[0], A2[1]); ctx.lineTo(B2[0], B2[1]); ctx.stroke();
-    const ah = (P, ux, uy) => { ctx.beginPath(); ctx.moveTo(P[0], P[1]); ctx.lineTo(P[0] + ux * 7 - uy * 2.6, P[1] + uy * 7 + ux * 2.6); ctx.lineTo(P[0] + ux * 7 + uy * 2.6, P[1] + uy * 7 - ux * 2.6); ctx.closePath(); ctx.fill(); };
-    ah(A2, dx / L, dy / L); ah(B2, -dx / L, -dy / L);
-    const mx = (A2[0] + B2[0]) / 2, my = (A2[1] + B2[1]) / 2; let ang = Math.atan2(dy, dx); if (ang > Math.PI / 2) ang -= Math.PI; if (ang < -Math.PI / 2) ang += Math.PI;
-    ctx.translate(mx, my); ctx.rotate(ang); ctx.font = `500 11px ${T.mono}`; const w = ctx.measureText(label).width + 8;
-    ctx.fillStyle = T.paper; ctx.fillRect(-w / 2, -8, w, 16); ctx.fillStyle = T.ink2; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(label, 0, .5);
-    ctx.restore();
-  },
-};
-
-/* canvas sizing helper */
-function hiDPI(canvas, onSize) {
-  const ctx = canvas.getContext("2d");
-  const ro = new ResizeObserver(() => {
-    const r = canvas.getBoundingClientRect(), d = Math.min(2.5, devicePixelRatio || 1);
-    canvas.width = Math.round(r.width * d); canvas.height = Math.round(r.height * d);
-    ctx.setTransform(d, 0, 0, d, 0, 0); onSize(r.width, r.height);
-  });
-  ro.observe(canvas); return ctx;
-}
-
-let heroTheme = () => {};
-
-/* =========================================================
-   HERO — 3D Jansen walking linkage (three.js)
-   Six legs on one crankshaft: three layers, 120° apart,
-   each with a mirrored pair. Link ratios are Theo Jansen's.
-   Drag to orbit; scrolling turns the crank.
-   ========================================================= */
-(function hero3d() {
-  const cv = $("#hero-3d");
-  const J = { a: 38, b: 41.5, c: 39.3, d: 40.1, e: 55.8, f: 39.4, g: 36.7, h: 65.7, i: 49, j: 50, k: 61.9, l: 7.8, m: 15 };
-  const Zp = [-J.a, -J.l];
-  const both = (P, r1, Q, r2) => { const dx = Q[0] - P[0], dy = Q[1] - P[1], D = Math.hypot(dx, dy), A = (r1 * r1 - r2 * r2 + D * D) / (2 * D), H = Math.sqrt(Math.max(0, r1 * r1 - A * A)), M = [P[0] + dx * A / D, P[1] + dy * A / D]; return [[M[0] - dy / D * H, M[1] + dx / D * H], [M[0] + dy / D * H, M[1] - dx / D * H]]; };
-  const pick = (arr, fn) => fn(arr[0]) < fn(arr[1]) ? arr[0] : arr[1];
-  function legL(th) {
-    const A = [J.m * Math.cos(th), J.m * Math.sin(th)];
-    const Y = pick(both(A, J.j, Zp, J.b), p => -p[1]), X = pick(both(A, J.k, Zp, J.c), p => p[1]);
-    const W = pick(both(Zp, J.d, Y, J.e), p => p[0]), V = pick(both(W, J.f, X, J.g), p => p[0]), F = pick(both(V, J.h, X, J.i), p => p[1]);
-    return { O: [0, 0], A, Z: Zp, Y, X, W, V, F };
-  }
-  const mirror = L => { const o = {}; for (const k in L) o[k] = [-L[k][0], L[k][1]]; return o; };
-  const legR = th => mirror(legL(Math.PI - th));
-  const FOOT_Y = -91.9, LAYERS = [0, 1, 2], DZ = 38;
-
-  let theta = 0.4, idle = 0, visible = true, W = 0, H = 0;
-  const scrollAng = () => scrollY / 140;
-  new IntersectionObserver(e => visible = e[0].isIntersecting).observe(cv);
-
-  /* ---------- 2D fallback (no WebGL) ---------- */
-  function fallback() {
-    const v = new View({ x0: -115, x1: 115, y0: -100, y1: 42 });
-    const ctx = hiDPI(cv, (w, h) => { W = w; H = h; v.fit(w, h, 12); });
-    let last = performance.now();
-    (function loop(t) {
-      const dt = Math.min(.05, (t - last) / 1000); last = t;
-      if (visible && W) {
-        if (!reduce) idle += dt * .8; theta = idle + scrollAng();
-        ctx.clearRect(0, 0, W, H); D.hatch(ctx, v, -112, 112, FOOT_Y - 1.5);
-        [legL(theta), legR(theta)].forEach(L => {
-          D.poly(ctx, v, [L.Z, L.Y, L.W], tex(ctx).wood); D.poly(ctx, v, [L.X, L.V, L.F], tex(ctx).woodL);
-          [[L.A, L.Y], [L.A, L.X], [L.Z, L.X], [L.W, L.V]].forEach(([p, q]) => D.bar(ctx, v, p, q, 2.2, "steel"));
-          D.bar(ctx, v, L.O, L.A, 3, "steel");
-          [L.A, L.Z, L.Y, L.X, L.W, L.V].forEach(p => D.pin(ctx, v, p, v.k * 1.6));
-        });
-      }
-      requestAnimationFrame(loop);
-    })(last);
-  }
-  if (!window.THREE) return fallback();
-  let renderer;
-  try { renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true }); } catch (e) { return fallback(); }
-  if (!renderer.getContext()) return fallback();
-
-  renderer.setPixelRatio(Math.min(2, devicePixelRatio || 1));
-  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(28, 1, 10, 3000);
-
-  // soft studio environment for the steel
-  const envScene = new THREE.Scene();
-  const sky = new THREE.Mesh(new THREE.SphereGeometry(500, 32, 16), new THREE.MeshBasicMaterial({ side: THREE.BackSide, vertexColors: true }));
-  { const g = sky.geometry, pos = g.attributes.position, cols = []; for (let i = 0; i < pos.count; i++) { const t = (pos.getY(i) / 500 + 1) / 2, c = .12 + .88 * Math.pow(t, 1.6); cols.push(c, c, c * .98); } g.setAttribute("color", new THREE.Float32BufferAttribute(cols, 3)); }
-  envScene.add(sky);
-  [[0, 380, 0, 500, 60], [-360, 120, 200, 160, 300], [360, 200, -120, 140, 240]].forEach(([x, y, z, w, h]) => {
-    const p = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide })); p.position.set(x, y, z); p.lookAt(0, 0, 0); envScene.add(p);
-  });
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(envScene, .04).texture;
-
-  // materials
-  const mkTex = (base, dark, light, seed) => { const t = new THREE.CanvasTexture(woodCanvas(base, dark, light, seed)); t.encoding = THREE.sRGBEncoding; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4; return t; };
-  const woodM = new THREE.MeshStandardMaterial({ map: mkTex("#7B4A28", "#4B2B15", "#B27B48", 7), roughness: .62, metalness: 0 });
-  const woodLM = new THREE.MeshStandardMaterial({ map: mkTex("#B27B48", "#7B4A28", "#E8C9A2", 11), roughness: .6, metalness: 0 });
-  const steelM = new THREE.MeshStandardMaterial({ color: 0xb9bec3, metalness: .55, roughness: .34, envMapIntensity: 1.2 });
-  const pinM = new THREE.MeshStandardMaterial({ color: 0xd2d6da, metalness: .6, roughness: .25, envMapIntensity: 1.3 });
-
-  const rig = new THREE.Group(); scene.add(rig);
-  const model = new THREE.Group(); model.position.y = 28; rig.add(model);
-  const unitBox = new THREE.BoxGeometry(1, 1, 1);
-  function link(mat, w, t, z) { const m = new THREE.Mesh(unitBox, mat); m.scale.set(1, w, t); m.position.z = z; m.castShadow = m.receiveShadow = true; model.add(m); return m; }
-  function setLink(m, p, q, w) { const dx = q[0] - p[0], dy = q[1] - p[1]; m.position.x = (p[0] + q[0]) / 2; m.position.y = (p[1] + q[1]) / 2; m.rotation.z = Math.atan2(dy, dx); m.scale.x = Math.hypot(dx, dy) + w; }
-  const pinGeo = new THREE.CylinderGeometry(1.35, 1.35, 1, 18); pinGeo.rotateX(Math.PI / 2);
-  function pin(z0, z1, r = 1) { const m = new THREE.Mesh(pinGeo, pinM); m.scale.set(r, r, z1 - z0); m.position.z = (z0 + z1) / 2; m.castShadow = true; model.add(m); return m; }
-  // rigid triangles are extruded once in their own frame, then placed each frame
-  function triangle(P0, P1, P2, mat, z, depth) {
-    const a0 = Math.atan2(P1[1] - P0[1], P1[0] - P0[0]), rot = p => { const x = p[0] - P0[0], y = p[1] - P0[1]; return [x * Math.cos(-a0) - y * Math.sin(-a0), x * Math.sin(-a0) + y * Math.cos(-a0)]; };
-    const q = [[0, 0], rot(P1), rot(P2)], cx = (q[0][0] + q[1][0] + q[2][0]) / 3, cy = (q[0][1] + q[1][1] + q[2][1]) / 3;
-    const inset = p => { const dx = p[0] - cx, dy = p[1] - cy, l = Math.hypot(dx, dy); return [p[0] - dx / l * 1.2, p[1] - dy / l * 1.2]; };
-    const s = new THREE.Shape(); const r = q.map(inset); s.moveTo(r[0][0], r[0][1]); s.lineTo(r[1][0], r[1][1]); s.lineTo(r[2][0], r[2][1]); s.closePath();
-    const g = new THREE.ExtrudeGeometry(s, { depth, bevelEnabled: true, bevelThickness: .5, bevelSize: .9, bevelSegments: 2 }); g.translate(0, 0, -depth / 2);
-    const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) / 60, uv.getY(i) / 14);
-    const m = new THREE.Mesh(g, mat); m.position.z = z; m.castShadow = m.receiveShadow = true; model.add(m);
-    return (a, b) => { m.position.x = a[0]; m.position.y = a[1]; m.rotation.z = Math.atan2(b[1] - a[1], b[0] - a[0]); };
-  }
-
-  // build the legs
-  const legs = [];
-  const zs = LAYERS.map(i => (i - 1) * DZ);
-  LAYERS.forEach((li, idx) => {
-    const z0 = zs[idx], phase = idx * 2 * Math.PI / 3;
-    [["L", legL], ["R", legR]].forEach(([side, fn]) => {
-      const ref = fn(0);
-      // every link gets its own depth plane: left leg in front of the crank, right leg behind it
-      const sz = side === "L" ? -1 : 1, Z = m => z0 + sz * m;
-      const leg = {
-        fn, phase,
-        crank: link(steelM, 3.2, 2, z0),
-        j: link(steelM, 2.4, 1.6, Z(2.6)), k: link(steelM, 2.4, 1.6, Z(5)),
-        lower: triangle(ref.X, ref.V, ref.F, side === "L" ? woodLM : woodM, Z(7.8), 1.8),
-        c: link(woodM, 3, 1.8, Z(10.6)),
-        upper: triangle(ref.Z, ref.Y, ref.W, woodM, Z(13.2), 1.8),
-        f: link(steelM, 2.4, 1.6, Z(15.8)),
-        pins: { A: pin(z0 - 5.9, z0 + 5.9), Y: pin(Math.min(Z(2.6), Z(13.2)) - .9, Math.max(Z(2.6), Z(13.2)) + .9), X: pin(Math.min(Z(5), Z(10.6)) - .9, Math.max(Z(5), Z(10.6)) + .9), W: pin(Math.min(Z(13.2), Z(15.8)) - .9, Math.max(Z(13.2), Z(15.8)) + .9), V: pin(Math.min(Z(7.8), Z(15.8)) - .9, Math.max(Z(7.8), Z(15.8)) + .9) },
-        footZ: Z(7.8),
-        foot: new THREE.Mesh(new THREE.SphereGeometry(2.1, 16, 12), pinM),
-      };
-      leg.foot.castShadow = true; model.add(leg.foot);
-      legs.push(leg);
-    });
-  });
-  // frame: crankshaft, fixed axles, chassis plates
-  const zMin = zs[0] - 18, zMax = zs[zs.length - 1] + 18;
-  const shaft = pin(zMin - 4, zMax + 4, 1.5); shaft.position.set(0, 0, shaft.position.z);
-  [[-J.a, -J.l], [J.a, -J.l]].forEach(p => { const m = pin(zMin - 2, zMax + 2, 1.25); m.position.x = p[0]; m.position.y = p[1]; });
-  [zMin - 1.5, zMax + 1.5].forEach(z => {
-    const s = new THREE.Shape(); s.moveTo(-J.a - 6, -J.l - 5); s.lineTo(J.a + 6, -J.l - 5); s.lineTo(J.a + 6, -J.l + 4); s.lineTo(8, 7); s.lineTo(-8, 7); s.lineTo(-J.a - 6, -J.l + 4); s.closePath();
-    const g = new THREE.ExtrudeGeometry(s, { depth: 3, bevelEnabled: true, bevelThickness: .4, bevelSize: .6, bevelSegments: 2 }); g.translate(0, 0, -1.5);
-    const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) / 90, uv.getY(i) / 18);
-    const m = new THREE.Mesh(g, woodM); m.position.z = z; m.castShadow = m.receiveShadow = true; model.add(m);
-  });
-  // ground: shadow catcher + scrolling grid
-  const groundY = model.position.y + FOOT_Y - 2.1;
-  const shadow = new THREE.Mesh(new THREE.PlaneGeometry(900, 900), new THREE.ShadowMaterial({ opacity: .16 }));
-  shadow.rotation.x = -Math.PI / 2; shadow.position.y = groundY; shadow.receiveShadow = true; rig.add(shadow);
-  const CELL = 20;
-  const gridMat = new THREE.ShaderMaterial({
-    transparent: true, depthWrite: false, extensions: { derivatives: true },
-    uniforms: { uColor: { value: new THREE.Color(0x000000) }, uOffset: { value: 0 }, uOpacity: { value: .22 } },
-    vertexShader: "varying vec2 vP; void main(){ vP = position.xy; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }",
-    fragmentShader: "uniform vec3 uColor; uniform float uOffset; uniform float uOpacity; varying vec2 vP;" +
-      "void main(){ vec2 p = vec2(vP.x + uOffset, vP.y) / " + CELL.toFixed(1) + "; vec2 g = abs(fract(p - 0.5) - 0.5) / fwidth(p);" +
-      "float line = 1.0 - min(min(g.x, g.y), 1.0); float fade = 1.0 - smoothstep(40.0, 165.0, length(vP));" +
-      "gl_FragColor = vec4(uColor, line * fade * uOpacity); }",
-  });
-  const grid = new THREE.Mesh(new THREE.PlaneGeometry(520, 520), gridMat);
-  grid.rotation.x = -Math.PI / 2; grid.position.y = groundY + .05; rig.add(grid);
-
-  // lights
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x3a3a38, .55));
-  const sun = new THREE.DirectionalLight(0xffffff, 1.35); sun.position.set(90, 220, 140); sun.castShadow = true;
-  sun.shadow.mapSize.set(1536, 1536); Object.assign(sun.shadow.camera, { left: -170, right: 170, top: 170, bottom: -170, near: 10, far: 700 }); sun.shadow.bias = -.0008; sun.shadow.radius = 3;
-  scene.add(sun);
-
-  function applyTheme() {
-    const ink = new THREE.Color(T.ink), paper = new THREE.Color(T.paper);
-    gridMat.uniforms.uColor.value = ink; gridMat.uniforms.uOpacity.value = isDarkTheme() ? .3 : .22;
-    shadow.material.opacity = isDarkTheme() ? .35 : .16;
-  }
-  const isDarkTheme = () => { const c = new THREE.Color(T.paper); return (c.r + c.g + c.b) / 3 < .5; };
-
-  // orbit by drag
-  let yaw = -.62, pitch = .2, yawT = yaw, pitchT = pitch, drag = null, dist = 470;
-  cv.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY, yaw: yawT, pitch: pitchT }; cv.setPointerCapture(e.pointerId); cv.classList.add("grabbing"); });
-  cv.addEventListener("pointermove", e => { if (!drag) return; yawT = drag.yaw - (e.clientX - drag.x) * .008; pitchT = clamp(drag.pitch + (e.clientY - drag.y) * .005, -.05, .75); });
-  const endDrag = () => { drag = null; cv.classList.remove("grabbing"); };
-  cv.addEventListener("pointerup", endDrag); cv.addEventListener("pointercancel", endDrag);
-
-  function resize() {
-    const r = cv.getBoundingClientRect(); W = r.width; H = r.height; if (!W) return;
-    renderer.setSize(W, H, false); camera.aspect = W / H;
-    dist = 460 * Math.max(1, 1.18 / camera.aspect); camera.updateProjectionMatrix();
-  }
-  new ResizeObserver(resize).observe(cv); resize();
-
-  function update() {
-    legs.forEach(leg => {
-      const L = leg.fn(theta + leg.phase);
-      setLink(leg.crank, L.O, L.A, 3.2); setLink(leg.j, L.A, L.Y, 2.4); setLink(leg.k, L.A, L.X, 2.4);
-      setLink(leg.c, L.Z, L.X, 3.2); setLink(leg.f, L.W, L.V, 2.4);
-      leg.upper(L.Z, L.Y); leg.lower(L.X, L.V);
-      for (const k in leg.pins) { leg.pins[k].position.x = L[k][0]; leg.pins[k].position.y = L[k][1]; }
-      leg.foot.position.set(L.F[0], L.F[1], leg.footZ);
-    });
-    // body walks toward -x; ground slides +x at the stance speed (≈ 20 units per radian)
-    gridMat.uniforms.uOffset.value = -((theta * 20) % CELL);
-  }
-
-  readTheme(); applyTheme();
-  let last = performance.now();
-  (function loop(t) {
-    const dt = Math.min(.05, (t - last) / 1000); last = t;
-    if (visible && W) {
-      if (!reduce) { idle += dt * .75; if (!drag) yawT += dt * .05; }
-      const target = idle + scrollAng();
-      theta += (target - theta) * (1 - Math.exp(-dt * 8));
-      yaw += (yawT - yaw) * (1 - Math.exp(-dt * 10)); pitch += (pitchT - pitch) * (1 - Math.exp(-dt * 10));
-      camera.position.set(Math.sin(yaw) * Math.cos(pitch) * dist, Math.sin(pitch) * dist + 10, Math.cos(yaw) * Math.cos(pitch) * dist);
-      camera.lookAt(0, -10, 0);
-      update(); renderer.render(scene, camera);
-    }
-    requestAnimationFrame(loop);
-  })(last);
-  heroTheme = () => applyTheme();
-})();
-
-/* re-read colours when the theme changes */
-const retheme = () => requestAnimationFrame(() => { readTheme(); heroTheme(); });
-new MutationObserver(retheme).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", retheme);
-document.fonts && document.fonts.ready.then(retheme);
 $$("video.vid").forEach(v => { v.muted = true; const go = () => v.play().catch(() => {}); go(); v.addEventListener("pause", () => { if (!document.hidden) go(); }); document.addEventListener("visibilitychange", () => { if (!document.hidden) go(); }); });
 })();
 </script>
